@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioNest - Multimedia</title>
+<style>
+  :root { --green:#2e5a3c; --leaf:#7fb069; --kraft:#b98b55; --ink:#1d2b22; --paper:#f5f7f1; }
+  body { margin:0; font-family: Georgia, serif; color:var(--ink); background:var(--paper); line-height:1.6; }
+  header { background:var(--green); color:#fff; padding:14px 24px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; }
+  header h1 { margin:0; font-size:26px; }
+  header small { display:block; font-size:13px; opacity:.85; }
+  nav a { color:#fff; margin-left:16px; text-decoration:none; }
+  nav a:hover { text-decoration:underline; }
+  main { max-width:900px; margin:0 auto; padding:20px; }
+  section { margin-bottom:32px; }
+  h2 { color:var(--green); border-bottom:2px solid var(--leaf); padding-bottom:4px; }
+  .banner { width:100%; height:200px; border-radius:8px; display:block; }
+  video, iframe { width:100%; max-width:100%; border:0; border-radius:8px; }
+  iframe { height:360px; }
+  #pdfFrame { height:450px; border:1px solid #ccc; }
+  button, select { font:inherit; padding:6px 12px; }
+</style>
+</head>
+<body>
+<header>
+  <div><h1>BioNest</h1><small>Biodegradable packaging solutions</small></div>
+  <nav><a href="#welcome">Welcome</a><a href="#video">Video</a><a href="#brochure">Brochure</a><a href="#location">Location</a></nav>
+</header>
+
+<main>
+  <!-- Banner image (inline SVG so no file is needed; replace with your own logo/banner) -->
+  <section>
+    <svg class="banner" viewBox="0 0 800 200" role="img" aria-label="BioNest banner">
+      <rect width="800" height="200" fill="#2e5a3c"/>
+      <path d="M90 150 C90 60 170 40 230 50 C230 120 170 160 90 150Z" fill="#7fb069"/>
+      <path d="M90 150 C130 110 170 85 215 62" stroke="#2e5a3c" stroke-width="4" fill="none"/>
+      <text x="270" y="100" font-size="52" fill="#fff" font-family="Georgia">BioNest</text>
+      <text x="272" y="140" font-size="20" fill="#cfe3c4" font-family="Georgia">Packaging that returns to the earth</text>
+    </svg>
+  </section>
+
+  <!-- AUDIO -->
+  <section id="welcome">
+    <h2>Welcome to BIONEST (audio)</h2>
+    <audio id="player" controls preload="metadata" aria-label="Welcome to BIONEST">
+      <source src="BIONEST AUDIO.ogg" type="audio/mpeg">
+      <source src="BIONEST AUDIO.ogg" type="audio/ogg">
+      Your browser does not support audio. <a href="BIONEST AUDIO.ogg">Download the welcome message</a>.
+    </audio>
+    <p>
+      <label for="speed">Speed:</label>
+      <select id="speed">
+        <option value="0.75">0.75x</option><option value="1" selected>1x</option>
+        <option value="1.5">1.5x</option><option value="2">2x</option>
+      </select>
+      <button id="speak" type="button">Play voice greeting</button>
+    </p>
+  </section>
+
+  <!-- VIDEO (local file) -->
+  <section>
+    <h2>How BioNest packaging is made</h2>
+    <video controls preload="metadata" poster="media/poster.jpg" muted playsinline>
+      <source src="BIONEST Video.mp4" type="video/webm">
+      <source src="BIONEST Video.mp4" type="video/mp4">
+      Your browser does not support video.
+    </video>
+  </section>
+
+  <!-- YOUTUBE -->
+  <section id="video">
+    <h2>Why biodegradable? (YouTube)</h2>
+    <!-- Replace YOUR_VIDEO_ID with the real YouTube video id -->
+    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="BioNest video" allowfullscreen loading="lazy"></iframe>
+  </section>
+
+  <!-- PDF FROM GOOGLE DRIVE -->
+  <section id="brochure">
+    <h2>Product brochure (PDF)</h2>
+    <!-- Replace YOUR_FILE_ID with the Google Drive file id (share: Anyone with the link) -->
+    <iframe src="BIONEST PDF.pdf" title="BioNest brochure"></iframe>
+  </section>
+
+  <!-- GOOGLE MAPS -->
+  <section id="location">
+    <h2>Find us</h2>
+    <iframe src="https://www.google.com/maps?q=Coimbatore,Tamil+Nadu&output=embed" title="BioNest location" loading="lazy"></iframe>
+  </section>
+</main>
+
+<script>
+  const audio = document.getElementById("player");
+  document.getElementById("speed").addEventListener("change", e => {
+    audio.playbackRate = parseFloat(e.target.value);
+  });
+  // Fallback: speak the greeting if welcome.mp3 is not added yet
+  document.getElementById("speak").addEventListener("click", () => {
+    if ("speechSynthesis" in window) {
+      speechSynthesis.speak(new SpeechSynthesisUtterance("Welcome to BIONEST"));
+    }
+  });
+</script>
+</body>
+</html>
