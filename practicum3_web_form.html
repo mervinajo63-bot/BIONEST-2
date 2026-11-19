@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioNest Order Form</title>
+<style>
+  body { font-family: "Times New Roman", serif; }
+  .form-box { width: 360px; border: 1px solid #2e5a3c; padding: 8px; margin: 20px; }
+  h2 { margin: 0 0 4px 0; font-size: 20px; color: #2e5a3c; }
+  .tag { margin: 0 0 12px 0; font-size: 13px; color: #555; }
+  .row { margin-bottom: 4px; }
+  label { display: inline-block; width: 110px; vertical-align: top; }
+  input, select, textarea { width: 135px; box-sizing: border-box; }
+  textarea { width: 200px; height: 55px; vertical-align: top; }
+  .buttons { margin-top: 6px; }
+  .buttons input, .buttons button { width: auto; }
+</style>
+</head>
+<body>
+<div class="form-box">
+  <h2>BioNest Order Form</h2>
+  <p class="tag">Biodegradable packaging solutions</p>
+
+  <form action="#" method="post">
+    <div class="row">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required autocomplete="given-name">
+    </div>
+    <div class="row">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required autocomplete="family-name">
+    </div>
+    <div class="row">
+      <label for="company">Company:</label>
+      <input type="text" id="company" name="company" autocomplete="organization">
+    </div>
+
+    <b>Delivery Address</b>
+    <div class="row">
+      <label for="street">Number &amp; Street:</label>
+      <input type="text" id="street" name="street" required>
+    </div>
+    <div class="row">
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" required>
+    </div>
+    <div class="row">
+      <label for="state">State:</label>
+      <input type="text" id="state" name="state" required>
+    </div>
+    <div class="row">
+      <label for="zip">PIN Code:</label>
+      <input type="text" id="zip" name="zip" pattern="[0-9]{6}" maxlength="6" placeholder="641001" required>
+    </div>
+
+    <div class="row">
+      <label for="product">Product:</label>
+      <select id="product" name="product" required>
+        <option value="">Select</option>
+        <option>Compostable mailers</option>
+        <option>Molded fibre trays</option>
+        <option>Plant-based food boxes</option>
+        <option>Biodegradable films</option>
+      </select>
+    </div>
+    <div class="row">
+      <label for="qty">Quantity:</label>
+      <input type="number" id="qty" name="qty" min="100" max="100000" step="100" value="100" required>
+    </div>
+    <div class="row">
+      <label for="needBy">Needed By:</label>
+      <input type="date" id="needBy" name="needBy" required>
+    </div>
+
+    <div class="row">
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" placeholder="98765 43210" pattern="[0-9 ]{10,12}">
+    </div>
+    <div class="row">
+      <label for="email">E-mail Address:</label>
+      <input type="email" id="email" name="email" placeholder="name@domain.com" required autocomplete="email">
+    </div>
+
+    <div class="row">
+      <label for="requests"><b>Special Requests:</b></label>
+      <textarea id="requests" name="requests" maxlength="300" placeholder="Size, printing, certification needs"></textarea>
+    </div>
+
+    <div class="buttons">
+      <button type="submit">Place enquiry</button>
+      <button type="reset">Clear</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
